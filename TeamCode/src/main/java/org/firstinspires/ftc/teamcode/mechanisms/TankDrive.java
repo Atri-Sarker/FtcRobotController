@@ -8,8 +8,8 @@ public class TankDrive {
     private DcMotor leftMotor, rightMotor;
 
     public void init(HardwareMap hwmap) {
-        leftMotor = hwmap.get(DcMotor.class, "leftMotor");
-        rightMotor = hwmap.get(DcMotor.class, "rightMotor");
+        leftMotor = hwmap.get(DcMotor.class, "left_motor");
+        rightMotor = hwmap.get(DcMotor.class, "right_motor");
 
         leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

@@ -17,6 +17,7 @@ public class PrototypeOpMode extends OpMode {
     @Override
     public void init() {
         drive.init(hardwareMap);
+        intake.init(hardwareMap);
     }
 
     @Override
