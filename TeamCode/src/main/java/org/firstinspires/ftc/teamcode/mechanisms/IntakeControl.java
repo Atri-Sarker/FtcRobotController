@@ -3,8 +3,12 @@ package org.firstinspires.ftc.teamcode.mechanisms;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class IntakeControl {
+
+    private ElapsedTime runtime = new ElapsedTime();
+    private ElapsedTime catatime = new ElapsedTime();
 
     private DcMotor intakeMotor;
 
