@@ -13,8 +13,8 @@ public class CatapultControl {
     private ElapsedTime runtime = new ElapsedTime();
     private ElapsedTime catatime = new ElapsedTime();
 
-    private double CATAPULT_UP_POWER = -0.7;
-    private double CATAPULT_DOWN_POWER = 0.7;
+    private double CATAPULT_UP_POWER = -1;
+    private double CATAPULT_DOWN_POWER = 1;
     private enum CatapultModes {UP, DOWN, BRAKE}
     private CatapultModes pivotMode;
 
@@ -46,7 +46,7 @@ public class CatapultControl {
             SHOOTING = "DOWN";
         }
         if (SHOOTING.equals("DOWN")) {
-            if (catatime.seconds() > 1.0) {
+            if (catatime.seconds() > 0.4) {
                 SHOOTING = "UP";
                 catatime.reset();
                 rightCatapult.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -54,11 +54,11 @@ public class CatapultControl {
             }
         }
         if (SHOOTING.equals("UP")) {
-            if (catatime.seconds() > 0.4) {
+            if (catatime.seconds() > 0.1) {
                 leftCatapult.setPower(CATAPULT_UP_POWER);
                 rightCatapult.setPower(CATAPULT_UP_POWER);
             }
-            if (catatime.seconds() > 1.0) {
+            if (catatime.seconds() > 0.34) {
                 leftCatapult.setPower(0);
                 rightCatapult.setPower(0);
                 SHOOTING = "FALSE";
