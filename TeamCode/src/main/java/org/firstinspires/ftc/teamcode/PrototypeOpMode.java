@@ -12,6 +12,7 @@ public class PrototypeOpMode extends OpMode {
 
     TankDrive drive = new TankDrive();
     CatapultControl catapult = new CatapultControl();
+    IntakeControl intakeServo = new IntakeControl();
     double throttle, spin;
 
     @Override
@@ -27,6 +28,13 @@ public class PrototypeOpMode extends OpMode {
 
         drive.drive(throttle, spin);
         catapult.handleCatapult(gamepad1.right_bumper);
+        if (gamepad1.a) {
+            intakeServo.drive(1.0);
+        } else if (gamepad1.b) {
+            intakeServo.drive(-1.0);
+        } else {
+            intakeServo.drive(0.0);
+        }
     }
 
 }

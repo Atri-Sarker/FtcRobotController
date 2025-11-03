@@ -1,24 +1,23 @@
 package org.firstinspires.ftc.teamcode.mechanisms;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class IntakeControl {
-
-    private ElapsedTime runtime = new ElapsedTime();
-    private ElapsedTime catatime = new ElapsedTime();
-
-    private DcMotor intakeMotor;
+    private CRServo intakeMotorBottom;
+    private CRServo intakeMotorTop;
 
     public void init(HardwareMap hwmap) {
-        intakeMotor = hwmap.get(DcMotor.class, "intakeMotor");
-        intakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        intakeMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        intakeMotorBottom = hwmap.get(CRServo.class, "bottomIntake");
+        intakeMotorTop = hwmap.get(CRServo.class, "topIntake");
+        intakeMotorBottom.setDirection(DcMotorSimple.Direction.REVERSE);
+        intakeMotorTop.setDirection(DcMotorSimple.Direction.FORWARD);
     }
-
     public void drive(double intakePower) {
-        intakeMotor.setPower(intakePower);
+        intakeMotorBottom.setPower(intakePower);
+        intakeMotorTop.setPower(intakePower);
     }
 }
