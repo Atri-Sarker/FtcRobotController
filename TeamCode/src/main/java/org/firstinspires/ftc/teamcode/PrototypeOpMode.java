@@ -19,6 +19,7 @@ public class PrototypeOpMode extends OpMode {
     public void init() {
         drive.init(hardwareMap);
         catapult.init(hardwareMap);
+        intakeServo.init(hardwareMap);
     }
 
     @Override
